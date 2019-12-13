@@ -1,0 +1,17 @@
+
+{"Cursos":[{
+    "Nombre_Curso":"Lenguajes Formales de Programación",
+    "Horario":"7:00 am - 10:00 am",
+    "Titular":{
+       "Nombre_Catedratico":"Ing. Renaldo Ospina"
+
+    },
+
+    "Estudiantes":{
+        "Nombre_Estudiante":"Luis Espinoza, Juan Diego Alvarado, Hugo Salguero"
+ 
+      }
+    
+}]
+}
+

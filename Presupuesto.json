@@ -1,0 +1,23 @@
+
+{"Presupuesto":[{
+    "Ingresos":{
+        "Descripción":"Donaciones",
+        "Monto":"Q.200.00"
+    
+    },
+    "Egresos":{
+        "Descripción":"Alquiler",
+        "Monto":"Q.100.00"
+    
+    },
+    "Compras":{
+        "Descripción":"Compra de  sillas",
+        "Monto":"Q.500.00"
+    
+    }
+    
+
+    
+}]
+}
+

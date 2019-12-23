@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+ 
+  
+}
+.card{
+  background : #1BD0D5
+  border = black 1px solid;
+  width: 30%;
+  align-items: center;   justify-content: center;
+ 
+}
+
+.card2{
+  background : #1BD0D5
+  border = black 1px solid;
+  width: 30%;
+  align-items: center;   justify-content: center;
+ 
+}
+.container-fluid{
+  
+} 
+.App-logo2{
+  width: 10%;
+}.App-logo3{
+  width: 20%;
+}

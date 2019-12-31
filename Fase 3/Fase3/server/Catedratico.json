@@ -1,0 +1,22 @@
+[
+    {
+        "id": "125",
+        "Registro": "20180333",
+        "Nombre": "Lucas",
+        "Fecha": "20/10/1999",
+        "Correo": "A@gmail.com",
+        "Universidad": "SanCARLOS",
+        "Nickname": "Lucas",
+        "Contraseña": "1244"
+    },
+    {
+        "id": "2",
+        "Registro": "25888",
+        "Nombre": "Fazt",
+        "Fecha": "2109-11-01",
+        "Correo": "lol@gmail.com",
+        "Universidad": "Unam",
+        "Nickname": "Lol",
+        "Contraseña": "1234"
+    }
+]

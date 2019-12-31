@@ -1,0 +1,55 @@
+Admin:[],
+  colaborador: [],
+    Estudiante :[]
+  , Catedratico:[]
+    }
+    }
+  
+    Noti0 = async() => {
+     
+      request.get('http://localhost:3200/Admin')
+      .end( (err ,res)=> {
+  console.log(res);
+  const Admin =JSON.parse(res.text);
+  this.setState({
+  
+    Admin : Admin
+     
+  }); });
+    }
+    
+    Noti2 = async() => {
+     
+      request.get('http://localhost:3200/colaborador')
+      .end( (err ,res)=> {
+  console.log(res);
+  const colaborador =JSON.parse(res.text);
+  this.setState({
+  
+    colaborador : colaborador
+     
+  }); });
+    }
+    Noti3 = async() => {
+     
+      request.get('http://localhost:3200/Estudiantes')
+      .end( (err ,res)=> {
+  console.log(res);
+  const Estudiante =JSON.parse(res.text);
+  this.setState({
+  
+    Estudiante : Estudiante    
+  }); });
+    }
+    Noti4 = async() => {
+     
+      request.get('http://localhost:3200/Catedratico')
+      .end( (err ,res)=> {
+  console.log(res);
+  const Catedratico =JSON.parse(res.text);
+  this.setState({
+  
+Catedratico : Catedratico   
+  }); });
+    }
+  

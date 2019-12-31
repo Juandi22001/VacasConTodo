@@ -1,0 +1,5 @@
+const Noti=fs.readFileSync('Noticias.json','utf-8')
+const noticias=JSON.parse(Noti);
+
+const json_noticias =JSON.stringify(noticias)
+fs.writeFileSync('Noticias.json',json_noticias,'utf-8')

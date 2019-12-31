@@ -1,0 +1,12 @@
+[
+    {
+        "id": "1",
+        "Nombre": "Pedro",
+        "Telefono": "123123123",
+        "Correo": "juandiegoAlvarado@gmail.com",
+        "Direccion": "231616",
+        "Rol": "Empleado",
+        "Oportunidades": "Ninguna",
+        "Encargado": "Huguito"
+    }
+]

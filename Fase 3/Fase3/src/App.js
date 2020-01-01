@@ -40,6 +40,10 @@ import VerSolicitud from './VerSolicitud';
 import MensajeEstudiante from './MensajeEstudiante';
 import MensajeCatedratico from './MensajeCatedratico';
 import RegistroActividades from './RegistroActividades';
+import RegistroActividadesC from './RegistroActividadesC';
+import CalificacionAdmin from './CalificacionAdmin';
+import CalificacionC from './CalificacionC';
+import CalificacionE from './CalificacionE';
 import PerfilAdmin from './PerfilAdmin';
 import PerfilEstudiante from './PerfilEstudiante';
 import PerfilColaborador from './PerfilColaborador';
@@ -49,12 +53,18 @@ import AsignarCursoColaborador from './AsignarCursoColaborador';
 import AsignarActividadColaborador from './AsignarActividadColaborador'
 import ComentarNoticiaColaborador from './ComentarNoticiaColaborador';
 import PresupuestoC from './PresupuestoC';
+import ReporteCursos from './ReporteCursos';
+import ReporteActividades from './ReporteActividades';
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
           <Switch>
+          
+          <Route path="/CalificacionE" exact component={CalificacionE} />
+          <Route path="/CalificacionC" exact component={CalificacionC} />
+          <Route path="/CalificacionAdmin" exact component={CalificacionAdmin} />
             <Route path="/" exact component={Login} />
             <Route path="/noticias" component={noticias} />
             <Route path="/CrearNoticia" component={Crearnoticias} />
@@ -102,8 +112,11 @@ class App extends Component {
             <Route path="/MensajeColaborador" component={MensajeColaborador} />
             <Route path="/MensajeCatedratico" component={MensajeCatedratico} />
             <Route path="/RegistroActividades" component={RegistroActividades} />
-           
-          </Switch>
+            <Route path="/RegistroActividadesC" component={RegistroActividadesC} />
+            <Route path="/ReporteCursos" component={ReporteCursos} />      
+         <Route path="/ReporteActividades" component={ReporteActividades} />
+
+          < /Switch>
         </div>
       </Router>
 

@@ -58,10 +58,11 @@ this.Noti();
    this.Noti(); 
    this.Noti2();  }
   render(){ 
+var Egresos=[]
 
-
+var Ingresos=[]
     var Egreso3 = this.state.Egreso.map((E, i)=>{
-       cont =+  Number(E.Total)
+       Egresos.push (Number(E.Total)) ;
      
         });
     
@@ -103,9 +104,20 @@ this.Noti();
                  
                     }); 
                     var Ingreso3 = this.state.Ingreso.map((E, i)=>{
-                        cont2 =+ Number(E.Total)
+                        Ingresos.push( Number(E.Total))
                         }); 
-                   Total=cont2-cont;
+
+
+
+                        var sumatoria = Ingresos.reduce(function(acumulador, siguienteValor){
+                          return acumulador + siguienteValor;
+                        }, 0);
+                        var sumatoria2 = Egresos.reduce(function(acumulador, siguienteValor){
+                          return acumulador + siguienteValor;
+                        }, 0);
+
+
+                   Total=sumatoria-sumatoria2;
          const {id,Carne,Nombre,Fecha,Correo,Telefono,Nickname,Contraseña}=this.state
          
         return (
@@ -193,6 +205,7 @@ this.Noti();
 
  <h1><span className="badge badge-primary"> Ganancia Esperada :Q.1000000000000000000000.00 </span> 
  </h1>  
+
   </div>
 
   

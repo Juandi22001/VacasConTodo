@@ -274,7 +274,8 @@ if (E2.idUsuario===a) {
                   <a className="navbar-brand" href="http://localhost:3000/VerSolicitud" > Ver Solicitud</a>
                   <a className="navbar-brand" href="http://localhost:3000/MensajeEstudiante" > Mensajes</a>
              
-            
+                  <a className="navbar-brand" href="http://localhost:3000/CalificacionE" > Calificar Actividad</a>
+             
                   <a className="navbar-brand" href="http://localhost:3000/EnviarS" >Solicitud</a>
 
                   <a className="navbar-brand" href="http://localhost:3000/AsignarCursosUsuario" >Cursos</a>

@@ -6,7 +6,7 @@ import request from 'superagent';
 import Admin from './Admin';
 const a = window.localStorage.getItem('id')
 
-class RegistroActividades extends Component {
+class RegistroActividadesC extends Component {
   constructor() {
     super();
     this.state = {
@@ -420,7 +420,7 @@ class RegistroActividades extends Component {
             <h5 className="card-title">  {c.Usuario} </h5>
             <span className="badge badge-info">Pago</span>
             <h5 className="card-title">  {c.idPago} </h5>
-            <button className="btn btn-light" onClick={() => this.Delete(c.id)}>Eliminar </button>
+
 
           </div>
         </div>
@@ -473,35 +473,28 @@ class RegistroActividades extends Component {
         <form on onSubmit={this.submitHandler}>
           <nav className="navbar navbar-dark bg-primary">
 
-          <a className="navbar-brand" href="http://localhost:3000/MensajesAdmin" >Mensajes</a>
-            
-            <a className="navbar-brand" href="http://localhost:3000/RegistroActividades" >Registro Actividades</a>
+      
+          <a className="navbar-brand" href="http://localhost:3000/RegistroActividadesC" >Registrar Actividades</a>
+
+<a className="navbar-brand" href="http://localhost:3000/MensajeColaborador" >Mensajes</a>
 
 
-            <a className="navbar-brand" href="http://localhost:3000/estudiante" >Registro Estudiante</a>
 
-<a className="navbar-brand" href="http://localhost:3000/catedratico" >Registro Catedratico</a>
+<a className="navbar-brand" href="http://localhost:3000/PresupuestoC" >Presupuesto</a>
 
-<a className="navbar-brand" href="http://localhost:3000/colaborador" >Registro Colaborador</a>
+<a className="navbar-brand" href="http://localhost:3000/VerNoticia" >Noticia</a>
 
-<a className="navbar-brand" href="http://localhost:3000/Admin" >Registro Admin</a>
+<a className="navbar-brand" href="http://localhost:3000/AsignarCursoColaborador" > Asignar Cursos</a>
+<a className="navbar-brand" href="http://localhost:3000/VerCursos" >Cursos</a>
 
-<a className="navbar-brand" href="http://localhost:3000/CrearActividades" > Actividades</a>
+<a className="navbar-brand" href="http://localhost:3000/AsignarActividadColaborador" >Actividades</a>
+   
+<a className="navbar-brand" href="http://localhost:3000/Inventario" >Inventario</a>
+   
+<a className="navbar-brand" href="http://localhost:3000/Inventario" >Inventario</a>
+<a className="navbar-brand" href="http://localhost:3000/Pagos" >Generar Pagos</a>
 
-<a className="navbar-brand" href="http://localhost:3000/CrearNoticia" > Noticias</a>
-<a className="navbar-branda" href="http://localhost:3000/" > Salir</a>
-
-<a className="navbar-brand" href="http://localhost:3000/Contactos" > Contactos</a>
-<a className="navbar-brand" href="http://localhost:3000/Tareas" > Tareas</a>
-
-<a className="navbar-brand" href="http://localhost:3000/PerfilAdmin" > Perfil</a>
-<a className="navbar-brand" href="http://localhost:3000/Cursos" > Cursos</a>
-<a className="navbar-brand" href="http://localhost:3000/Presupuesto" > Presupuesto</a>
-<a className="navbar-brand" href="http://localhost:3000/Bienes" > Inventario</a>
-<a className="navbar-brand" href="http://localhost:3000/GeneracionPago" > Boleta de Pago</a>
-<a className="navbar-brand" href="http://localhost:3000/Egreso" > Egreso</a>
-<a className="navbar-brand" href="http://localhost:3000/Ingreso" > Ingreso</a>
-<a className="navbar-brand" href="http://localhost:3000/PagosA" > RegistroPagos</a>
+<button type="submit" onClick={(this.Eliminar)} className="btn btn-light">SALIR</button>
 
           </nav>
 
@@ -634,4 +627,4 @@ class RegistroActividades extends Component {
     );
   }
 }
-export default RegistroActividades
+export default RegistroActividadesC

@@ -350,7 +350,11 @@ if (E2.idUsuario===a) {
             <div className="App">
                 <form on onSubmit={this.submitHandler}>          <nav className="navbar navbar-dark bg-primary">
             
+
+                <a className="navbar-brand" href="http://localhost:3000/CalificacionC" >CalificacionC</a>
            
+
+                <a className="navbar-brand" href="http://localhost:3000/RegistroActividadesC" >Registrar Actividades</a>
 
                 <a className="navbar-brand" href="http://localhost:3000/MensajeColaborador" >Mensajes</a>
 

@@ -392,7 +392,7 @@ let Mensajes=[]
 <a className="navbar-brand" href="http://localhost:3000/Contactos" > Contactos</a>
 <a className="navbar-brand" href="http://localhost:3000/Tareas" > Tareas</a>
 
-<a className="navbar-brand" href="http://localhost:3000/PerfilAdmin" > Perfil</a>
+<a className="navbar-brand" href="http://localhost:3000/PerfilColaborador" > Perfil</a>
 <a className="navbar-brand" href="http://localhost:3000/Cursos" > Cursos</a>
 <a className="navbar-brand" href="http://localhost:3000/Presupuesto" > Presupuesto</a>
 <a className="navbar-brand" href="http://localhost:3000/Bienes" > Inventario</a>

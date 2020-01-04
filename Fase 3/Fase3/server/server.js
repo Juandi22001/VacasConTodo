@@ -33,7 +33,9 @@ app.post('/CalificacionActividad', (req, res) => {
       Usuario: req.body.Usuario,
       Comentario: req.body.Comentario,
       Calificacion :req.body.Calificacion ,
-      id:req.body.id
+      id:req.body.id,
+      Actividad:req.body.Actividad,
+      Tipo:req.body.Tipo
     }
 
     CalificacionActividad.push(Estudiante);
@@ -77,7 +79,9 @@ app.post('/RegistroActividades', (req, res) => {
       Actividad: req.body.Actividad,
       Valor :req.body.Valor ,
       idPago : req.body.idPago,
-      id:req.body.id
+      id:req.body.id,
+      Tipo:req.body.Tipo
+      
     }
 
     RegistroActividades.push(Estudiante);
@@ -101,6 +105,78 @@ app.delete('/RegistroActividades/:id', (req, res) => {
   })
   res.send(RegistroActividades);
 })
+
+////Denuncia  
+
+const Denun = fs.readFileSync('Denuncia.json', 'utf-8')
+const Denuncia = JSON.parse(Denun);
+app.get('/Denuncia', (req, res) => {
+  res.json(Denuncia)
+});
+
+app.post('/Denuncia', (req, res) => {
+  try {
+    const Estudiante = {
+      Estado: req.body.Estado,
+      Comentario: req.body.Comentario,
+  Descripcion: req.body.Descripcion
+    
+    }
+
+    Denuncia.push(Estudiante);
+    res.status(201).send()
+    const json_Denuncia = JSON.stringify(Denuncia)
+    fs.writeFileSync('Denuncia.json', json_Denuncia, 'utf-8')
+
+  } catch {
+    res.status(500).send()
+  }
+
+});
+
+
+
+/////Comentario 
+
+const Comen = fs.readFileSync('Comentario.json', 'utf-8')
+const Comentario = JSON.parse(Comen);
+app.get('/Comentario', (req, res) => {
+  res.json(Comentario)
+});
+
+app.post('/Comentario', (req, res) => {
+  try {
+    const Estudiante = {
+      Usuario: req.body.Usuario,
+      Comentario: req.body.Comentario,
+  Noticia: req.body.Noticia
+    
+    }
+
+    Comentario.push(Estudiante);
+    res.status(201).send()
+    const json_Comentario = JSON.stringify(Comentario)
+    fs.writeFileSync('Comentario.json', json_Comentario, 'utf-8')
+
+  } catch {
+    res.status(500).send()
+  }
+
+});
+app.delete('/Comentario/: Noticia', (req, res) => {
+
+  const { Noticia } = req.params;
+  under.each(Comentario, (noti, i) => {
+    if (noti.Noticia === Noticia) {
+    Comentario.splice(i, 1);
+  consle.log("borrado")
+  }
+
+  })
+  res.send(Comentario);
+})
+
+
 
 
 //////Mensajes
@@ -794,9 +870,31 @@ const Contactos = JSON.parse(Contact);
 
 
 app.get('/Contactos', (req, res) => {
+ 
   res.json(Contactos)
 });
 
+
+app.get('/Contactos/Telefono', (req, res) => {
+  ordenar(Contactos,'Telefono')
+  res.json(Contactos)
+});
+app.get('/Contactos/Nombre', (req, res) => {
+  ordenar(Contactos,'Nombre')
+  res.json(Contactos)
+});
+
+
+app.get('/Contactos/Correo', (req, res) => {
+  ordenar(Contactos,'Correo')
+  res.json(Contactos)
+});
+
+function ordenar(p_array_json, p_key) {
+  p_array_json.sort(function (a, b) {
+     return a[p_key] > b[p_key];
+  });
+}
 app.post('/Contactos', (req, res) => {
   try {
 

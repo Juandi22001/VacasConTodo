@@ -1,42 +1,61 @@
-  import React, { Component } from 'react';
-import logo from './actividades.svg';
+import React, { Component } from 'react';
+import logo from './cursos.svg';
 import './App.css';
 import axios from 'axios';
 import request from 'superagent';
 
-class  ReporteActividades extends Component {
+class  ReporteCurso3 extends Component {
   constructor() {
     super();
     this.state = {
       id: '',
       NombreUsuario: '',
-    Actividad: '',
+      Cursos: '',
       idUsuario: '',
       cursos: [],
-      Ingreso: [],
+     Usuarios:[],
       Admin: [],
       colaborador: [],
       Estudiante: [],
       Catedratico: [],
-    AsignarActividad: [],
+      AsignarCurso: [],
+   
+   
+      AsignarActividad:[],
+     
     RegistroActividades: []
 
-  }
+}
 }
 
 
 NotiRegistro = async () => {
-  request.get('http://localhost:3200/RegistroActividades')
-    .end((err, res) => {
-      console.log(res);
-      const RegistroActividades = JSON.parse(res.text);
-      this.setState({
+request.get('http://localhost:3200/RegistroActividades')
+  .end((err, res) => {
+    console.log(res);
+    const RegistroActividades = JSON.parse(res.text);
+    this.setState({
 
-        RegistroActividades: RegistroActividades
+      RegistroActividades: RegistroActividades
 
-      });
     });
+  });
 }
+
+
+    NotiA2 = async() => {
+      request.get('http://localhost:3200/AsignarActividad')
+      .end( (err ,res)=> {
+  console.log(res);
+  const AsignarActividad  =JSON.parse(res.text);
+  this.setState({
+  
+    AsignarActividad: AsignarActividad
+     
+  }); });
+    }
+
+
 
 
   Noti0 = async () => {
@@ -55,13 +74,13 @@ NotiRegistro = async () => {
 
   Noti01 = async () => {
 
-    request.get('http://localhost:3200/AsignarActividad')
+    request.get('http://localhost:3200/AsignarCurso')
       .end((err, res) => {
         console.log(res);
-        const AsignarActividad = JSON.parse(res.text);
+        const AsignarCurso = JSON.parse(res.text);
         this.setState({
 
-        AsignarActividad: AsignarActividad
+          AsignarCurso: AsignarCurso
 
         });
       });
@@ -123,13 +142,13 @@ NotiRegistro = async () => {
       });
   }
   Delete = async (id) => {
-    await axios.delete('http://localhost:3200/AsignarActividad/' + id);
+    await axios.delete('http://localhost:3200/AsignarCurso/' + id);
     this.Noti01();
   }
   submitHandler = e => {
     e.preventDefault()
     console.log(this.state)
-    axios.post('http://localhost:3200/AsignarActividad', this.state)
+    axios.post('http://localhost:3200/AsignarCurso', this.state)
       .then(response => {
         console.log(response)
       });
@@ -141,7 +160,7 @@ NotiRegistro = async () => {
     this.Noti();
     this.Noti0();
     this.Noti01(); this.Noti3(); this.Noti2();
-    this.Noti4(); this.NotiRegistro();  this.state.NombreUsuario="vacio"
+    this.Noti4(); this.NotiA2(); this.NotiRegistro();   this.state.Cursos="vacio"
   }
 
 
@@ -153,7 +172,7 @@ NotiRegistro = async () => {
     let valColaborador = false;
     let valEstudiante = false;
     let valCatedratico = false;
-this.state.NombreUsuario=" "
+
     var cursos = this.state.cursos.map((c, i) => {
       if (c.Nombre === this.state.Curso) {
         valCurso = true;
@@ -223,11 +242,11 @@ this.state.NombreUsuario=" "
 
   render() {
 
-    var A_curso = this.state.AsignarActividad.map((c, i) => {
+    var A_curso = this.state.cursos.map((c, i) => {
         return (
 
 
-        <option key={c.Actividad}  > {c.Actividad}</option>
+        <option key={c.Nombre}  > {c.Nombre}</option>
 
 
 
@@ -240,6 +259,7 @@ this.state.NombreUsuario=" "
 
 
 
+  
 
 
     var A_colaborador = this.state.colaborador.map((c, i) => {
@@ -271,52 +291,12 @@ this.state.NombreUsuario=" "
 
 
       );
-    });    var Asistencia=["--"]
-  if(this.state.NombreUsuario==="vacio"){  
-
-    var elementosRemovidos = Asistencia.splice(0, Asistencia.length);}
-    var A_Registro = this.state.RegistroActividades.map((c2, i) => {
-
-      var AsignarActividad = this.state.AsignarActividad.map((c, i) => {
-        if(c.NombreUsuario===this.state.NombreUsuario && c2.Usuario===this.state.NombreUsuario   && c2.Actividad===c.Actividad && c2.Valor==="Aceptado"   ){ 
-          Asistencia.push("Actividad "+" ---------   "+ c2.Actividad  +" Asistencia"+"  ------:  "+"SI"  )
-
-       
-          }
-
-
-        });
-    
-
-
     });
-
-
-
-    var A_Registro2 = this.state.RegistroActividades.map((c2, i) => {
-
-      var AsignarActividad2 = this.state.AsignarActividad.map((c, i) => {
-        if( c.NombreUsuario === this.state.NombreUsuario && c2.Usuario != this.state.NombreUsuario && c2.Actividad===c.Actividad   ){ 
-       
-          Asistencia.push("Actividad "+" ---------   "+ c.Actividad  +" Asistencia"+"  ------:  "+"No"  )
-
-          } else{
-            Asistencia.push("--")
-        
-          }
-
-
-        });
-    
-
-
-    });
-
-    var A_Estudiantes = this.state.Estudiante.map((c, i) => {
+    var A_colaborador2 = this.state.colaborador.map((c, i) => {
       return (
 
 
-        <option key={c.Nombre}  > {c.Nombre}</option>
+        <option key={c.id}  > {c.id}</option>
 
 
 
@@ -325,10 +305,109 @@ this.state.NombreUsuario=" "
 
       );
     });
+ let Usuarios = []
+let Actividad=[]
+let P =[]
+let P2 =[]
+let P3 =[]
+
+let P4 =[]
+
+if(this.state.Curso==="vacio"){
+  var elementosRemovidos = Actividad.splice(0, Actividad.length);
+  var elementosRemovidos = P.splice(0, P.length);
+  var elementosRemovidos = P2.splice(0, P2.length);
+  var elementosRemovidos = P3.splice(0, P3.length);
+  
+  
+  var elementosRemovidos = Usuarios.splice(0, Usuarios.length);
+
+}
 
 
-   
-    const { id, NombreUsuario, Actividad, idUsuario } = this.state
+
+
+
+ var AsignarCurso = this.state.AsignarCurso.map((c, i) => {
+
+
+    if(c.Curso===this.state.Cursos ){  
+       
+        Usuarios.push(c.NombreUsuario)
+    
+    } else{
+    
+    }
+});
+
+var Estudiante = this.state.Estudiante.map((c3, i) => {
+ 
+  
+var RegistroActividades =this.state.RegistroActividades.map((c,i)=>{
+var AsignarActividad = this.state.AsignarActividad.map((c2, i) => {
+
+    for (var i=0; i<Usuarios.length; i++) { 
+
+      if(Usuarios[i]===c.Usuario && c2.NombreUsuario===Usuarios[i] &&c3.Nombre===Usuarios[i]   && c2.Actividad===c.Actividad && c.Valor==="Aceptado"){     
+            Actividad.push("Estudiante:"+" --"+ c3.Carne+"Actividad"+"--"+c.Actividad+"Asistencia:"+"si")
+            P3.push(c.Usuario)
+
+}
+
+
+    }
+
+});
+});
+
+});
+
+var Estudiante = this.state.Estudiante.map((c3, i) => {
+ 
+var RegistroActividades2 =this.state.RegistroActividades.map((c,i)=>{
+    var AsignarActividad2 = this.state.AsignarActividad.map((c2, i) => {
+    
+        for (var i=0; i<P3.length; i++) { 
+    
+            if(c.Usuario!=P3[i] && P3[i]===c3.Nombre&&c2.Actividad != c.Actividad){
+              P.push("Actividad"+"--- "+c2.Actividad +"Usario:"+c3.Carne)
+    
+    }
+
+    
+        }
+      });
+    });
+    });
+    var AsignarCurso = this.state.AsignarCurso.map((c, i) => {
+
+    var Estudiante2 = this.state.Estudiante.map((c3, i) => {
+      for (var i=0; i<P2.length; i++) { 
+       
+        if(P2[i]===c3.Nombre && P2[i]===c.NombreUsuario){
+ P.push("Usuario:"+c3.Carne+"Asistio :no")
+        }
+         
+        
+            }
+          });  
+
+
+    });
+let prueba=false;
+ 
+var Estudiante = this.state.Estudiante.map((c2, i) => {
+    
+  for (var i=0; i<Usuarios.length; i++) { 
+       
+      if(Usuarios[i] === c2.Nombre){    
+     P4.push( "Estudiantes"+"--"+ c2.Carne )
+     
+     
+      }}
+    });  
+
+    const { id, NombreUsuario, Cursos, idUsuario } = this.state
 
     return (
 
@@ -341,7 +420,7 @@ this.state.NombreUsuario=" "
             <a className="navbar-brand" href="http://localhost:3000" > RegistroPagos</a>
           </nav>
 
-          <h1><span className="badge badge-primary">Reporte Actividades </span>
+          <h1><span className="badge badge-primary">Reporte Cursos y Actividades  </span>
 
           </h1>
           <img src={logo} className="App-logo3" alt="logo" />
@@ -356,16 +435,17 @@ this.state.NombreUsuario=" "
 
               <div className="form-group">
 
-                <h3><span className="badge badge-info">Escoja Estudiante </span>
+                <h3><span className="badge badge-info">Cursos  </span>
 
                 </h3>
 
-                <select class="selectpicker" name="NombreUsuario" defaultValue={NombreUsuario} onChange={this.changeHandler} >
+                <select class="selectpicker" name="Cursos" defaultValue={Cursos} onChange={this.changeHandler} >
 
-               { A_Estudiantes}
+                  {A_curso}
                 </select>
-                <input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="NombreUsuario" value={NombreUsuario} onChange={this.changeHandler} ></input>
-              </div>
+                <input type="text" className="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" name="Cursos" value={Cursos} onChange={this.changeHandler} ></input>
+         
+             </div>
 
 
 
@@ -377,8 +457,16 @@ this.state.NombreUsuario=" "
             </div>
 
           </div>
- {Asistencia}
+          {P4}
+          <h3><span className="badge badge-info"> Asistentes a Actividades
+        </span>
+
+</h3>{Actividad}      <h3><span className="badge badge-info"> InAsistentes a Actividades
+        </span>
+
+</h3>{P}
         </form>
+   
       </div>
 
 
@@ -401,4 +489,4 @@ this.state.NombreUsuario=" "
     );
   }
 }
-export default ReporteActividades
+export default ReporteCurso3

@@ -1,12 +1,1 @@
-[
-    {
-        "id": "1",
-        "Nombre": "Pedro",
-        "Telefono": "123123123",
-        "Correo": "juandiegoAlvarado@gmail.com",
-        "Direccion": "231616",
-        "Rol": "Empleado",
-        "Oportunidades": "Ninguna",
-        "Encargado": "Huguito"
-    }
-]
+[{"id":"44444444444","Nombre":"Abel","Telefono":"3222","Correo":"Abelito@gmail.com","Direccion":"Z8","Rol":"Prestamista","Oportunidades":"Prestamo","Encargado":"Pedro"},{"id":"1","Nombre":"Pedro","Telefono":"123123123","Correo":"juandiegoAlvarado@gmail.com","Direccion":"231616","Rol":"Empleado","Oportunidades":"Ninguna","Encargado":"Huguito"},{"id":"134234","Nombre":"Edwin","Telefono":"123123123","Correo":"lucas@gmail.com","Direccion":"231616","Rol":"Empleado","Oportunidades":"Ninguna","Encargado":"Pablo"},{"id":"134234","Nombre":"Lucas","Telefono":"123123123","Correo":"lucas@gmail.com","Direccion":"231616","Rol":"Empleado","Oportunidades":"Ninguna","Encargado":"Pablo"},{"id":"8888888888888","Nombre":"Bromas","Telefono":"23423423","Correo":"Joker@gmail.com","Direccion":"BROMAS","Rol":"cHISTES","Oportunidades":"Bromas","Encargado":"Hugo Alvarado"},{"id":"","Nombre":"","Telefono":"","Correo":"","Direccion":"","Rol":"","Oportunidades":"","Encargado":"-"},{"id":"","Nombre":"","Telefono":"","Correo":"","Direccion":"","Rol":"","Oportunidades":"","Encargado":"-"},{"id":"","Nombre":"","Telefono":"","Correo":"","Direccion":"","Rol":"","Oportunidades":"","Encargado":"-"},{"id":"1213123","Nombre":"Luis Garcia","Telefono":"324241324132","Correo":"Garcia@gmail.com","Direccion":"z5","Rol":"Prestamista","Oportunidades":"Donacion","Encargado":"-"},{"id":"","Nombre":"","Telefono":"","Correo":"","Direccion":"","Rol":"","Oportunidades":"","Encargado":"-"},{"id":"","Nombre":"","Telefono":"","Correo":"","Direccion":"","Rol":"","Oportunidades":"","Encargado":"-"},{"id":"","Nombre":"","Telefono":"","Correo":"","Direccion":"","Rol":"","Oportunidades":"","Encargado":"-"},{"id":"","Nombre":"","Telefono":"","Correo":"","Direccion":"","Rol":"","Oportunidades":"","Encargado":"-"}]

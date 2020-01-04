@@ -1,10 +1,10 @@
-  import React, { Component } from 'react';
-import logo from './actividades.svg';
+import React, { Component } from 'react';
+import logo from './vs.svg';
 import './App.css';
 import axios from 'axios';
 import request from 'superagent';
 
-class  ReporteActividades extends Component {
+class  ReporteVs extends Component {
   constructor() {
     super();
     this.state = {
@@ -13,14 +13,14 @@ class  ReporteActividades extends Component {
     Actividad: '',
       idUsuario: '',
       cursos: [],
-      Ingreso: [],
+
       Admin: [],
       colaborador: [],
       Estudiante: [],
       Catedratico: [],
     AsignarActividad: [],
-    RegistroActividades: []
-
+    RegistroActividades: [],
+    Ingreso: []
   }
 }
 
@@ -69,13 +69,13 @@ NotiRegistro = async () => {
 
   Noti2 = async () => {
 
-    request.get('http://localhost:3200/colaborador')
+    request.get('http://localhost:3200/Ingreso')
       .end((err, res) => {
         console.log(res);
-        const colaborador = JSON.parse(res.text);
+        const Ingreso = JSON.parse(res.text);
         this.setState({
 
-          colaborador: colaborador
+         Ingreso: Ingreso
 
         });
       });
@@ -141,7 +141,7 @@ NotiRegistro = async () => {
     this.Noti();
     this.Noti0();
     this.Noti01(); this.Noti3(); this.Noti2();
-    this.Noti4(); this.NotiRegistro();  this.state.NombreUsuario="vacio"
+    this.Noti4(); this.NotiRegistro(); 
   }
 
 
@@ -272,9 +272,7 @@ this.state.NombreUsuario=" "
 
       );
     });    var Asistencia=["--"]
-  if(this.state.NombreUsuario==="vacio"){  
-
-    var elementosRemovidos = Asistencia.splice(0, Asistencia.length);}
+  if(this.state.NombreUsuario===" "){  Asistencia.push("----")}
     var A_Registro = this.state.RegistroActividades.map((c2, i) => {
 
       var AsignarActividad = this.state.AsignarActividad.map((c, i) => {
@@ -293,20 +291,12 @@ this.state.NombreUsuario=" "
 
 
 
-    var A_Registro2 = this.state.RegistroActividades.map((c2, i) => {
+    var A_Registro2 = this.state.Ingreso.map((c2, i) => {
 
-      var AsignarActividad2 = this.state.AsignarActividad.map((c, i) => {
-        if( c.NombreUsuario === this.state.NombreUsuario && c2.Usuario != this.state.NombreUsuario && c2.Actividad===c.Actividad   ){ 
-       
-          Asistencia.push("Actividad "+" ---------   "+ c.Actividad  +" Asistencia"+"  ------:  "+"No"  )
+     return(
+        <tr key ={c2.Nombre}>{c2.Nombre}</tr>
 
-          } else{
-            Asistencia.push("--")
-        
-          }
-
-
-        });
+        );
     
 
 
@@ -316,10 +306,8 @@ this.state.NombreUsuario=" "
       return (
 
 
-        <option key={c.Nombre}  > {c.Nombre}</option>
-
-
-
+     
+      <tr key ={c.Nombre}>{c.Nombre}</tr>
 
 
 
@@ -341,31 +329,62 @@ this.state.NombreUsuario=" "
             <a className="navbar-brand" href="http://localhost:3000" > RegistroPagos</a>
           </nav>
 
-          <h1><span className="badge badge-primary">Reporte Actividades </span>
+          <h1><span className="badge badge-primary">Usuario Registrados vs Usuarios  </span>
 
           </h1>
           <img src={logo} className="App-logo3" alt="logo" />
 
           <  div className="container-fluid" align="center">
             <div className="col-md-4 text-center">
-              <h3><span className="badge badge-primary">Escoja Cursos </span>
+            <table className="table">
+  <thead className="thead-secondary">
+    <tr>
+ 
+      <th scope="col">Usuario Registrados</th>
 
-              </h3>
+      <th scope="col">Usuarios que  ya pagaron pagan  </th>
+   
+     
+      
 
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr>
+  
+      {A_Estudiantes}
+
+
+
+      <td>
+    { A_Registro2}
+
+
+
+
+</td>
+   
+    </tr>
+      </tbody>
+</table>
           
 
-              <div className="form-group">
 
-                <h3><span className="badge badge-info">Escoja Estudiante </span>
 
-                </h3>
 
-                <select class="selectpicker" name="NombreUsuario" defaultValue={NombreUsuario} onChange={this.changeHandler} >
 
-               { A_Estudiantes}
-                </select>
-                <input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="NombreUsuario" value={NombreUsuario} onChange={this.changeHandler} ></input>
-              </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -377,7 +396,7 @@ this.state.NombreUsuario=" "
             </div>
 
           </div>
- {Asistencia}
+
         </form>
       </div>
 
@@ -401,4 +420,4 @@ this.state.NombreUsuario=" "
     );
   }
 }
-export default ReporteActividades
+export default ReporteVs

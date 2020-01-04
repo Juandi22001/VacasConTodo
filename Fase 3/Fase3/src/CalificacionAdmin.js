@@ -12,21 +12,36 @@ class CalificacionAdmin extends Component {
         super();
         this.state = {
           id: '',
+          Tipo:'',
        Usuario: '',
+       Actividad:'',
           Comentario: '',
           Calificacion: '',
           cursos: [],
-          actividad: [],
+          
           Admin: [],
           colaborador: [],
           Estudiante: [],
           Catedratico: [],
           AsignarActividad: [],
           RegistroActividades: [],
-          Ingreso: []
+          Ingreso: [],
+          actividad: [],
         }
       }
     
+      NotiA = async () => {
+        request.get('http://localhost:3200/Actividades')
+          .end((err, res) => {
+            console.log(res);
+            const actividad = JSON.parse(res.text);
+            this.setState({
+    
+              actividad: actividad
+    
+            });
+          });
+      }
     
       NotiRegistro = async () => {
         request.get('http://localhost:3200/RegistroActividades')
@@ -57,19 +72,7 @@ class CalificacionAdmin extends Component {
     
     
     
-      NotiA = async () => {
-        request.get('http://localhost:3200/Actividades')
-          .end((err, res) => {
-            console.log(res);
-            const actividad = JSON.parse(res.text);
-            this.setState({
-    
-              actividad: actividad
-    
-            });
-          });
-      }
-    
+     
       Noti0 = async () => {
     
         request.get('http://localhost:3200/Admin')
@@ -303,6 +306,15 @@ class CalificacionAdmin extends Component {
     
         });
     
+        var Tipo = this.state.actividad.map((E, i) => {
+       if(E.id===this.state.Actividad){
+
+        this.state.Tipo=E.Tipo
+       }
+
+
+    
+        });
     
     
         var Ingreso2 = this.state.Ingreso.map((E, i) => {
@@ -474,7 +486,7 @@ class CalificacionAdmin extends Component {
     
     
     
-        const { Comentario, Usuario, Calificacion,  id } = this.state
+        const { Comentario, Usuario, Calificacion,  id , Actividad} = this.state
     
         return (
     
@@ -537,7 +549,7 @@ class CalificacionAdmin extends Component {
     
                     </h3>
                    
-                    <select class="selectpicker" name="Usuario" defaultValue={Usuario} onChange={this.changeHandler} >
+                    <select class="selectpicker" name="Actividad" defaultValue={Actividad} onChange={this.changeHandler} >
     
                       {Ingreso}
                     </select>

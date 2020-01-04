@@ -6,7 +6,7 @@ import request from 'superagent';
 import Admin from './Admin';
 const a = window.localStorage.getItem('id')
 
-class RegistroActividadesC extends Component {
+class ReporteActividades2 extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,9 +14,9 @@ class RegistroActividadesC extends Component {
       idPago: '',
       Carne: '',
       Actividad: '',
-      Tipo: '',
       Usuario: '',
       Valor: '',
+      Tipo: '',
       cursos: [],
       actividad: [],
       Admin: [],
@@ -175,7 +175,7 @@ class RegistroActividadesC extends Component {
     this.Noti0();
     this.Noti01(); this.Noti3(); this.Noti2();
     this.Noti4();
-    this.NotiA();
+    this.NotiA(); this.state.Actividad="vacio"
     this.NotiI(); this.NotiRegistro();
   }
 
@@ -304,6 +304,103 @@ class RegistroActividadesC extends Component {
 
 
     });
+    let Usuarios=[];
+   let Asistencia=[];
+   let P=[];
+   let P2=[];
+   let P3=[];
+   if(this.state.Actividad==="vacio"){
+
+    var elementosRemovidos = Asistencia.splice(0, Asistencia.length);
+    var elementosRemovidos = P.splice(0, P.length);
+    var elementosRemovidos = P2.splice(0, P2.length);
+    var elementosRemovidos = P3.splice(0, P3.length);
+   
+    var elementosRemovidos = Usuarios.splice(0, Usuarios.length);
+   }
+   var AsignarActividad = this.state.AsignarActividad.map((c2, i) => {
+      
+    
+  if(this.state.Actividad===c2.Actividad){
+Usuarios.push(c2.NombreUsuario);
+
+
+  }
+  
+  
+  
+      
+  
+  });
+    var Estudiante = this.state.Estudiante.map((c3, i) => {
+
+ 
+  
+      var RegistroActividades =this.state.RegistroActividades.map((c,i)=>{
+      var AsignarActividad = this.state.AsignarActividad.map((c2, i) => {
+      
+          for (var i=0; i<Usuarios.length; i++) { 
+      
+         
+      if(Usuarios[i]===c3.Nombre && Usuarios[i]===c.Usuario && Usuarios[i]===c2.NombreUsuario && c.Valor==="Aceptado"){
+  Asistencia.push("Usuario="+"--"+c3.Carne+"--"+"Asistencia"+"---"+"si")
+    
+P2.push(c.Usuario)
+}
+      
+      
+      
+          }
+      
+      });
+      });
+      
+      });
+
+
+    
+  
+        var RegistroActividades2 =this.state.RegistroActividades.map((c,i)=>{
+        var AsignarActividad2 = this.state.AsignarActividad.map((c2, i) => {
+        
+        
+          for (var i=0; i<P2.length; i++) { 
+           
+            if(P2[i]!=c.Usuario){
+     P3.push(c.Usuario)
+            }
+             
+            
+                }
+     
+     
+        });
+        
+        });
+
+
+        var Estudiante2 = this.state.Estudiante.map((c3, i) => {
+          for (var i=0; i<P3.length; i++) { 
+           
+            if(P3[i]===c3.Nombre){
+     P.push("Usuario:"+c3.Carne)
+            }
+             
+            
+                }
+    
+    
+        });
+ 
+
+
+
+
+
+
+
+
+
 
 
 
@@ -374,11 +471,10 @@ class RegistroActividadesC extends Component {
 
 
     });
-
     var Tipo = this.state.actividad.map((c, i) => {
-    if(c.id==this.state.Actividad){
-    this.state.Tipo=c.Tipo
-    }
+      if (c.id == this.state.Actividad) {
+        this.state.Tipo = c.Tipo
+      }
     });
 
 
@@ -401,76 +497,6 @@ class RegistroActividadesC extends Component {
 
 
 
-    var AsignarActividad = this.state.AsignarActividad.map((c, i) => {
-
-
-      if (c.NombreUsuario === this.state.Usuario & c.Actividad === this.state.Actividad) {
-
-        this.state.Valor = "Aceptado"
-
-      } else {
-        this.state.Valor = "Falso"
-
-
-      }
-    });
-
-    var Registroactividad = this.state.RegistroActividades.map((c, i) => {
-      return <li key={i}>
-
-
-        <div className="card" >
-          <div className="card-body">
-            <span className="badge badge-info">ID</span>
-            <h5 className="card-title">  {c.id} </h5>
-            <span className="badge badge-info">Usuario</span>
-            <h5 className="card-title">  {c.Usuario} </h5>
-            <span className="badge badge-info">Pago</span>
-            <h5 className="card-title">  {c.idPago} </h5>
-
-
-          </div>
-        </div>
-      </li>
-    });
-
-    var actividad = this.state.actividad.map((c, i) => {
-      return <li key={i}>
-
-
-        <div className="card" >
-          <div className="card-body">
-            <span className="badge badge-info">ID</span>
-            <h5 className="card-title">  {c.id} </h5>
-            <span className="badge badge-info">Expositor</span>
-            <h5 className="card-title">  {c.Expositor} </h5>
-            <span className="badge badge-info">Lugar</span>
-            <h5 className="card-title">  {c.Lugar} </h5>
-
-          </div>
-        </div>
-      </li>
-    });
-
-    var Estudiante = this.state.Estudiante.map((E3, i) => {
-      if (E3.id === a) {
-
-        ADMIN = E3.Nombre
-      }
-    });
-
-
-    var Estudiante = this.state.Estudiante.map((E3, i) => {
-      if (E3.id === a) {
-
-
-      }
-    });
-
-
-
-
-
 
     const { Carne, Usuario, Actividad, idPago, id } = this.state
 
@@ -480,28 +506,35 @@ class RegistroActividadesC extends Component {
         <form on onSubmit={this.submitHandler}>
           <nav className="navbar navbar-dark bg-primary">
 
+            <a className="navbar-brand" href="http://localhost:3000/MensajesAdmin" >Mensajes</a>
 
-            <a className="navbar-brand" href="http://localhost:3000/RegistroActividadesC" >Registrar Actividades</a>
-
-            <a className="navbar-brand" href="http://localhost:3000/MensajeColaborador" >Mensajes</a>
-
+            <a className="navbar-brand" href="http://localhost:3000/RegistroActividades" >Registro Actividades</a>
 
 
-            <a className="navbar-brand" href="http://localhost:3000/PresupuestoC" >Presupuesto</a>
+            <a className="navbar-brand" href="http://localhost:3000/estudiante" >Registro Estudiante</a>
 
-            <a className="navbar-brand" href="http://localhost:3000/VerNoticia" >Noticia</a>
+            <a className="navbar-brand" href="http://localhost:3000/catedratico" >Registro Catedratico</a>
 
-            <a className="navbar-brand" href="http://localhost:3000/AsignarCursoColaborador" > Asignar Cursos</a>
-            <a className="navbar-brand" href="http://localhost:3000/VerCursos" >Cursos</a>
+            <a className="navbar-brand" href="http://localhost:3000/colaborador" >Registro Colaborador</a>
 
-            <a className="navbar-brand" href="http://localhost:3000/AsignarActividadColaborador" >Actividades</a>
+            <a className="navbar-brand" href="http://localhost:3000/Admin" >Registro Admin</a>
 
-            <a className="navbar-brand" href="http://localhost:3000/Inventario" >Inventario</a>
+            <a className="navbar-brand" href="http://localhost:3000/CrearActividades" > Actividades</a>
 
-            <a className="navbar-brand" href="http://localhost:3000/Inventario" >Inventario</a>
-            <a className="navbar-brand" href="http://localhost:3000/Pagos" >Generar Pagos</a>
+            <a className="navbar-brand" href="http://localhost:3000/CrearNoticia" > Noticias</a>
+            <a className="navbar-branda" href="http://localhost:3000/" > Salir</a>
 
-            <button type="submit" onClick={(this.Eliminar)} className="btn btn-light">SALIR</button>
+            <a className="navbar-brand" href="http://localhost:3000/Contactos" > Contactos</a>
+            <a className="navbar-brand" href="http://localhost:3000/Tareas" > Tareas</a>
+
+            <a className="navbar-brand" href="http://localhost:3000/PerfilAdmin" > Perfil</a>
+            <a className="navbar-brand" href="http://localhost:3000/Cursos" > Cursos</a>
+            <a className="navbar-brand" href="http://localhost:3000/Presupuesto" > Presupuesto</a>
+            <a className="navbar-brand" href="http://localhost:3000/Bienes" > Inventario</a>
+            <a className="navbar-brand" href="http://localhost:3000/GeneracionPago" > Boleta de Pago</a>
+            <a className="navbar-brand" href="http://localhost:3000/Egreso" > Egreso</a>
+            <a className="navbar-brand" href="http://localhost:3000/Ingreso" > Ingreso</a>
+            <a className="navbar-brand" href="http://localhost:3000/PagosA" > RegistroPagos</a>
 
           </nav>
 
@@ -513,24 +546,11 @@ class RegistroActividadesC extends Component {
 
           <  div className="container-fluid" align="center">
             <div className="col-md-4 text-center">
-              <h3><span className="badge badge-primary">Ingrese Datos </span>
-
-              </h3>
 
 
 
-              <div className="form-group">
 
-                <h3><span className="badge badge-info">Estudiantes </span>
 
-                </h3>
-                <input type="text" className="form-control" placeholder="id" aria-label="Username" aria-describedby="addon-wrapping" name="id" value={id} onChange={this.changeHandler}></input>
-
-                <select class="selectpicker" name="Usuario" defaultValue={Usuario} onChange={this.changeHandler} >
-
-                  {Ingreso}
-                </select>
-              </div>
 
 
 
@@ -557,42 +577,16 @@ class RegistroActividadesC extends Component {
               <button type="submit" onClick={(this.Validar)} className="btn btn-light">Validar</button>
             </div>
 
-            <div className="form-group" >
-              <div className="card" >
-                <div className="card-body">
-                  <h1><span className="badge badge-info"> Ver Pagos </span>
+            <h3><span className="badge badge-info">ASISTENTES </span>
 
-                  </h1>
+</h3>
 
-                  <select class="selectpicker" name="idPago" defaultValue={idPago} onChange={this.changeHandler} >
+{Asistencia}
+<h3><span className="badge badge-info">No ASISTENTES </span>
 
-                    {Ingreso3}
-                  </select>
+</h3>
 
-                  <input type="text" className="form-control" placeholder="Concepto" aria-label="Username" aria-describedby="addon-wrapping" name="idPago" value={idPago} onChange={this.changeHandler}></input>
-
-                  {Ingreso2}
-                </div> </div> </div>
-
-
-
-
-
-            <div className="form-group">
-              <div className="card" >
-                <div className="card-body">
-
-
-
-                  <h1><span className="badge badge-info"> Buscar Pagos </span>
-
-                  </h1>
-
-                  <input type="text" className="form-control" placeholder="Concepto" aria-label="Username" aria-describedby="addon-wrapping" name="Carne" value={Carne} onChange={this.changeHandler}></input>
-
-
-                  {Ingreso4}
-                </div> </div> </div>
+{P}
 
 
 
@@ -604,13 +598,7 @@ class RegistroActividadesC extends Component {
 
           </div>
         </form>
-        <h1><span className="badge badge-primary">Actividades</span>
-          {actividad}
-        </h1>
 
-        <h1><span className="badge badge-primary"> Registro de Actividades</span>
-          {Registroactividad}
-        </h1>
 
       </div>
 
@@ -634,4 +622,4 @@ class RegistroActividadesC extends Component {
     );
   }
 }
-export default RegistroActividadesC
+export default ReporteActividades2

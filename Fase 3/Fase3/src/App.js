@@ -54,14 +54,39 @@ import AsignarActividadColaborador from './AsignarActividadColaborador'
 import ComentarNoticiaColaborador from './ComentarNoticiaColaborador';
 import PresupuestoC from './PresupuestoC';
 import ReporteCursos from './ReporteCursos';
+import ReporteCursos2 from './ReporteCursos2';
+import ReporteCurso3 from './ReporteCurso3';
+import ReporteUniversidad from './ReporteUniversidad';
+
+import ReporteConferencias from './ReporteConferencias';
+import ReporteTalleres from './ReporteTalleres';
+import ReporteEncargado from './ReporteEncargado';
+import ReporteSinEncargado from './ReporteSinEncargado';
+import Denuncia from './Denuncia';
+import VerDenuncia from './VerDenuncia';
+
+import ReporteIngresos from './ReporteIngresos';
+import ReporteEgresos from './ReporteEgresos';
+
+import ReporteNacionalidad from './ReporteNacionalidad';
+import ReporteContactos from './ReporteContactos';
+
+import ReporteVisitas from './ReporteVisitas';
+import ReportePagos from './ReportePagos';
+
+import ReporteActividades2 from './ReporteActividades2';
 import ReporteActividades from './ReporteActividades';
+import ReporteUsuario from './ReporteUsuario';
+import ReporteVs from './ReporteVs';
+import VerPunteoConferencias from './VerPunteoConferencias';
+ 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
           <Switch>
-          
+          <Route path="/ReporteTalleres" exact component={ReporteTalleres} />  
           <Route path="/CalificacionE" exact component={CalificacionE} />
           <Route path="/CalificacionC" exact component={CalificacionC} />
           <Route path="/CalificacionAdmin" exact component={CalificacionAdmin} />
@@ -112,11 +137,40 @@ class App extends Component {
             <Route path="/MensajeColaborador" component={MensajeColaborador} />
             <Route path="/MensajeCatedratico" component={MensajeCatedratico} />
             <Route path="/RegistroActividades" component={RegistroActividades} />
+            <Route path="/RegistroActividades2" component={RegistroActividades} />
+            <Route path="/Denuncia" component={Denuncia} />
+            <Route path="/VerDenuncia" component={VerDenuncia} />
+         
             <Route path="/RegistroActividadesC" component={RegistroActividadesC} />
+         
+            <Route path="/ReporteContactos" component={ReporteContactos} />      
+         
             <Route path="/ReporteCursos" component={ReporteCursos} />      
-         <Route path="/ReporteActividades" component={ReporteActividades} />
+         
+            <Route path="/ReporteCursos2" component={ReporteCursos2} />      
+            <Route path="/ReporteCurso3" component={ReporteCurso3} />      
+       
+            <Route path="/ReporteConferencias" component={ReporteConferencias } />      
+            <Route path="/ReporteVisitas" component={ReporteVisitas } />      
+            <Route path="/ReporteEncargado" component={ReporteEncargado} />      
+            <Route path="/ReporteSinEncargado" component={ReporteSinEncargado} />      
 
-          < /Switch>
+            <Route path="/ReporteIngresos" component={ReporteIngresos} />      
+            <Route path="/ReporteEgresos" component={ReporteEgresos} />      
+            <Route path="/ReportePagos" component={ReportePagos} />      
+   
+            <Route path="/ReporteActividades2" component={ReporteActividades2} />
+            <Route path="/ReporteNacionalidad" component={ReporteNacionalidad} />
+            <Route path="/ReporteUniversidad" component={ReporteUniversidad} />
+       
+       
+         <Route path="/ReporteActividades" component={ReporteActividades} />
+          <Route path="/ReporteUsuario" component={ReporteUsuario} />
+          <Route path="/VerPunteoConferencias" component={VerPunteoConferencias} />
+
+          <Route path="/ReporteVs" component={ReporteVs} />
+
+           </Switch>
         </div>
       </Router>
 
@@ -296,7 +350,7 @@ class Login extends Component {
 
           <a className="navbar-brand" href="http://localhost:3000/Registro2" >Registro Catedratico</a>
 
-          <a className="navbar-brand" href="http://localhost:3000/VerActividades" > Actividades</a>
+          <a className="navbar-brand" href="http://localhost:3000/VerPunteoConferencias" > Actividades</a>
 
           <a className="navbar-brand" href="http://localhost:3000/noticias" > Noticias</a>
           <a className="navbar-brand" href="http://localhost:3000/" >Login</a>

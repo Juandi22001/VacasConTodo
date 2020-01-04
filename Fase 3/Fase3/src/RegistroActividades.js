@@ -16,6 +16,7 @@ class RegistroActividades extends Component {
       Actividad: '',
       Usuario: '',
       Valor: '',
+      Tipo:'',
       cursos: [],
       actividad: [],
       Admin: [],
@@ -372,6 +373,11 @@ class RegistroActividades extends Component {
       );
 
 
+    });
+    var Tipo = this.state.actividad.map((c, i) => {
+  if(c.id==this.state.Actividad){
+      this.state.Tipo=c.Tipo
+    }
     });
 
 

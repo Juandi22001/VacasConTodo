@@ -283,7 +283,8 @@ class PerfilAdmin extends Component {
           <a className="navbar-brand" href="http://localhost:3000/Egreso" > Egreso</a>
           <a className="navbar-brand" href="http://localhost:3000/Ingreso" > Ingreso</a>
           <a className="navbar-brand" href="http://localhost:3000/PagosA" > RegistroPagos</a>
-          
+          <a className="navbar-brand" href="http://localhost:3000/VerPunteoConferencias" > VerC Calificacion</a>
+         
           <a className="navbar-brand" href="http://localhost:3000/CalificacionAdmin" > CalificarActividad </a>
 
           <button type="submit" onClick={(this.Eliminar)} className="btn btn-light">SALIR</button>

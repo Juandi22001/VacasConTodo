@@ -1,42 +1,48 @@
-  import React, { Component } from 'react';
-import logo from './actividades.svg';
+import React, { Component } from 'react';
+import logo from './cursos.svg';
 import './App.css';
 import axios from 'axios';
 import request from 'superagent';
 
-class  ReporteActividades extends Component {
+class  ReporteCursos2 extends Component {
   constructor() {
     super();
     this.state = {
       id: '',
       NombreUsuario: '',
-    Actividad: '',
+      Curso: '',
       idUsuario: '',
       cursos: [],
-      Ingreso: [],
+     Usuarios:[],
       Admin: [],
       colaborador: [],
       Estudiante: [],
       Catedratico: [],
-    AsignarActividad: [],
-    RegistroActividades: []
+      AsignarCurso: [],
+   
+   
+      AsignarActividad:[]
+     
+           
+    }
+    }
 
-  }
-}
 
 
-NotiRegistro = async () => {
-  request.get('http://localhost:3200/RegistroActividades')
-    .end((err, res) => {
-      console.log(res);
-      const RegistroActividades = JSON.parse(res.text);
-      this.setState({
 
-        RegistroActividades: RegistroActividades
+    NotiA2 = async() => {
+      request.get('http://localhost:3200/AsignarActividad')
+      .end( (err ,res)=> {
+  console.log(res);
+  const AsignarActividad  =JSON.parse(res.text);
+  this.setState({
+  
+    AsignarActividad: AsignarActividad
+     
+  }); });
+    }
 
-      });
-    });
-}
+
 
 
   Noti0 = async () => {
@@ -55,13 +61,13 @@ NotiRegistro = async () => {
 
   Noti01 = async () => {
 
-    request.get('http://localhost:3200/AsignarActividad')
+    request.get('http://localhost:3200/AsignarCurso')
       .end((err, res) => {
         console.log(res);
-        const AsignarActividad = JSON.parse(res.text);
+        const AsignarCurso = JSON.parse(res.text);
         this.setState({
 
-        AsignarActividad: AsignarActividad
+          AsignarCurso: AsignarCurso
 
         });
       });
@@ -123,13 +129,13 @@ NotiRegistro = async () => {
       });
   }
   Delete = async (id) => {
-    await axios.delete('http://localhost:3200/AsignarActividad/' + id);
+    await axios.delete('http://localhost:3200/AsignarCurso/' + id);
     this.Noti01();
   }
   submitHandler = e => {
     e.preventDefault()
     console.log(this.state)
-    axios.post('http://localhost:3200/AsignarActividad', this.state)
+    axios.post('http://localhost:3200/AsignarCurso', this.state)
       .then(response => {
         console.log(response)
       });
@@ -141,7 +147,7 @@ NotiRegistro = async () => {
     this.Noti();
     this.Noti0();
     this.Noti01(); this.Noti3(); this.Noti2();
-    this.Noti4(); this.NotiRegistro();  this.state.NombreUsuario="vacio"
+    this.Noti4(); this.NotiA2();
   }
 
 
@@ -153,7 +159,7 @@ NotiRegistro = async () => {
     let valColaborador = false;
     let valEstudiante = false;
     let valCatedratico = false;
-this.state.NombreUsuario=" "
+
     var cursos = this.state.cursos.map((c, i) => {
       if (c.Nombre === this.state.Curso) {
         valCurso = true;
@@ -223,11 +229,11 @@ this.state.NombreUsuario=" "
 
   render() {
 
-    var A_curso = this.state.AsignarActividad.map((c, i) => {
+    var A_curso = this.state.AsignarCurso.map((c, i) => {
         return (
 
 
-        <option key={c.Actividad}  > {c.Actividad}</option>
+        <option key={c.Curso}  > {c.Curso}</option>
 
 
 
@@ -239,6 +245,20 @@ this.state.NombreUsuario=" "
 
 
 
+
+    var A_Estudiantes = this.state.Estudiante.map((c, i) => {
+      return (
+
+
+        <option key={c.Nombre}  > {c.Nombre}</option>
+
+
+
+
+
+
+      );
+    });
 
 
 
@@ -271,52 +291,12 @@ this.state.NombreUsuario=" "
 
 
       );
-    });    var Asistencia=["--"]
-  if(this.state.NombreUsuario==="vacio"){  
-
-    var elementosRemovidos = Asistencia.splice(0, Asistencia.length);}
-    var A_Registro = this.state.RegistroActividades.map((c2, i) => {
-
-      var AsignarActividad = this.state.AsignarActividad.map((c, i) => {
-        if(c.NombreUsuario===this.state.NombreUsuario && c2.Usuario===this.state.NombreUsuario   && c2.Actividad===c.Actividad && c2.Valor==="Aceptado"   ){ 
-          Asistencia.push("Actividad "+" ---------   "+ c2.Actividad  +" Asistencia"+"  ------:  "+"SI"  )
-
-       
-          }
-
-
-        });
-    
-
-
     });
-
-
-
-    var A_Registro2 = this.state.RegistroActividades.map((c2, i) => {
-
-      var AsignarActividad2 = this.state.AsignarActividad.map((c, i) => {
-        if( c.NombreUsuario === this.state.NombreUsuario && c2.Usuario != this.state.NombreUsuario && c2.Actividad===c.Actividad   ){ 
-       
-          Asistencia.push("Actividad "+" ---------   "+ c.Actividad  +" Asistencia"+"  ------:  "+"No"  )
-
-          } else{
-            Asistencia.push("--")
-        
-          }
-
-
-        });
-    
-
-
-    });
-
-    var A_Estudiantes = this.state.Estudiante.map((c, i) => {
+    var A_colaborador2 = this.state.colaborador.map((c, i) => {
       return (
 
 
-        <option key={c.Nombre}  > {c.Nombre}</option>
+        <option key={c.id}  > {c.id}</option>
 
 
 
@@ -325,10 +305,75 @@ this.state.NombreUsuario=" "
 
       );
     });
+ var usuarios = []
 
 
+
+
+
+
+
+ var AsignarCurso = this.state.AsignarCurso.map((c, i) => {
+
+
+    if(c.Curso===this.state.Curso){  
+
+
+        usuarios.push(c.NombreUsuario)
+    }else{
+        usuarios.push("---")
+    }
+});
+
+var AsignarActividad = this.state.AsignarActividad.map((c, i) => {
+
+    for (var i=0; i<usuarios.length; i++) { 
+
+        if(usuarios[i]===c.NombreUsuario){
+
+
+
+return(
+    
+    <div className="card" >
+    <div className="card-body">
+      <span className="badge badge-info">Usuario</span>
+      <h5 className="card-title">  {c.NombreUsuario} </h5>
+
+      <span className="badge badge-info">Actividad</span>
+      <h5 className="card-title">  {c.Actividad} </h5>
+
+            </div>
+  </div>
+
+
+);
+}
+
+    }
+
+});
+
+    var AsignarCurso = this.state.AsignarCurso.map((c, i) => {
+       
    
-    const { id, NombreUsuario, Actividad, idUsuario } = this.state
+        if(c.Curso===this.state.Curso){   return (
+
+
+        <div className="card" >
+          <div className="card-body">
+            <span className="badge badge-info">ID</span>
+            <h5 className="card-title">  {c.id} </h5>
+ 
+            <span className="badge badge-info">Nombre</span>
+            <h5 className="card-title">  {c.NombreUsuario} </h5>
+
+                  </div>
+        </div>
+      );}
+    });
+
+    const { id, NombreUsuario, Curso, idUsuario } = this.state
 
     return (
 
@@ -341,7 +386,7 @@ this.state.NombreUsuario=" "
             <a className="navbar-brand" href="http://localhost:3000" > RegistroPagos</a>
           </nav>
 
-          <h1><span className="badge badge-primary">Reporte Actividades </span>
+          <h1><span className="badge badge-primary">Reporte Cursos </span>
 
           </h1>
           <img src={logo} className="App-logo3" alt="logo" />
@@ -356,15 +401,15 @@ this.state.NombreUsuario=" "
 
               <div className="form-group">
 
-                <h3><span className="badge badge-info">Escoja Estudiante </span>
+                <h3><span className="badge badge-info">Cursos Disponibles </span>
 
                 </h3>
 
-                <select class="selectpicker" name="NombreUsuario" defaultValue={NombreUsuario} onChange={this.changeHandler} >
+                <select class="selectpicker" name="Curso" defaultValue={Curso} onChange={this.changeHandler} >
 
-               { A_Estudiantes}
+                  {A_curso}
                 </select>
-                <input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="NombreUsuario" value={NombreUsuario} onChange={this.changeHandler} ></input>
+                <input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="Curso" value={Curso} onChange={this.changeHandler} ></input>
               </div>
 
 
@@ -377,8 +422,13 @@ this.state.NombreUsuario=" "
             </div>
 
           </div>
- {Asistencia}
+          {AsignarCurso}
+          <h3><span className="badge badge-info">Actividades </span>
+
+</h3>
+          {AsignarActividad}
         </form>
+   
       </div>
 
 
@@ -401,4 +451,4 @@ this.state.NombreUsuario=" "
     );
   }
 }
-export default ReporteActividades
+export default ReporteCursos2

@@ -13,6 +13,8 @@ class CalificacionC extends Component {
         this.state = {
           id: '',
        Usuario: '',
+       Tipo:'',
+       Actividad:'',
           Comentario: '',
           Calificacion: '',
           cursos: [],
@@ -190,7 +192,8 @@ class CalificacionC extends Component {
         let valCatedratico = false;
     
     
-    
+       
+       
         var AsignarActividad = this.state.AsignarActividad.map((c, i) => {
     
     
@@ -286,7 +289,16 @@ class CalificacionC extends Component {
         let ADMIN4;
         let ADMIN5;
     
-    
+        var Tipo = this.state.actividad.map((E, i) => {
+          if(E.id===this.state.Actividad){
+   
+           this.state.Tipo=E.Tipo
+          }
+   
+   
+       
+           });
+       
         var Ingreso = this.state.actividad.map((E, i) => {
           return (
     
@@ -474,7 +486,7 @@ class CalificacionC extends Component {
     
     
     
-        const { Comentario, Usuario, Calificacion,  id } = this.state
+        const { Comentario, Usuario, Calificacion,  id ,Actividad} = this.state
     
         return (
     
@@ -533,7 +545,7 @@ class CalificacionC extends Component {
     
                     </h3>
                    
-                    <select class="selectpicker" name="Usuario" defaultValue={Usuario} onChange={this.changeHandler} >
+                    <select class="selectpicker" name="Actividad" defaultValue={Actividad} onChange={this.changeHandler} >
     
                       {Ingreso}
                     </select>

@@ -10,14 +10,16 @@ var ADMIN ;
 var ADMIN1 ;
 
 let ADMIN2 ;
-class ComentarNoticia extends Component{
+class Denuncia extends Component{
     constructor(){
         super();
         this.state={
        P:'',
           Noticia:'',
           Comentario:'',
-          Usuario :'',
+        Descripcion:'',
+        Estado:'', 
+        Usuario :'',
         noticias :[],
           Admin:[],
           colaborador: [],
@@ -124,7 +126,7 @@ class ComentarNoticia extends Component{
         submitHandler = e => {
           e.preventDefault()
           console.log(this.state)
-          axios.post('http://localhost:3200/Comentario',this.state) 
+          axios.post('http://localhost:3200/Denuncia',this.state) 
           .then(response =>  {
            console.log(response)
           }) ;
@@ -138,14 +140,73 @@ class ComentarNoticia extends Component{
            componentDidMount(){
             this.Noti();
             this.Noti0(); this.Noti3(); this.Noti2();
-            this.Noti4(); this.NotiComentario();
+            this.Noti4(); this.NotiComentario(); this.state.Estado="Pendiente"
                }
           
           
                Validar = (e) =>{
           
+                let valAdmin =false;
+                let valColaborador =false;
+                let valEstudiante =false;
+                let valCatedratico =false;
+                
+                 var colaborador= this.state.colaborador.map((E2, i)=>{
+                   if (E2.Nombre=== this.state.Usuario) {
+                     valColaborador =true;
+                        }     });
+          
+                 var Admin = this.state.Admin.map((E, i)=>{
+                   if (E.Nombre=== this.state.Usuario) {
+                valAdmin =true;
+                   } 
+          
+              
+               
+                 });
+               
+                 var Estudiante= this.state.Estudiante.map((E3, i)=>{
+                  if (E3.Nombre=== this.state.Usuario) {
+               
+               valEstudiante =true;
+                  } 
+          
              
-      this.props.history.push("/Denuncia")     
+              
+                });
+              
+          
+                 var Catedratico= this.state.Catedratico.map((E3, i)=>{
+                   if (E3.Nombre=== this.state.Usuario) {
+                
+                valCatedratico =true;
+                   } 
+          
+              
+               
+                 });
+               
+                  if(valAdmin ===true){ 
+                    alert('Datos Correctos')
+                  
+                  }
+                  
+                 else if(valColaborador ===true){
+                  alert('Datos Correctos')
+                  
+                 }
+                 
+                  else if(valEstudiante ===true){
+                    alert('Datos Correctos')
+                 }
+                 
+               else  if(valCatedratico ===true){
+                alert('Datos Correctos')
+                 }
+                 else{
+                   alert("Datos incorrectos")
+                 }
+                   
                  
                 }
       
@@ -194,7 +255,7 @@ class ComentarNoticia extends Component{
               });
               
       var noticias3= this.state.Comentarios.map((noticia, i)=>{
-        return (  <option key={noticia.Noticia}  > {noticia.Noticia}</option>
+        return (  <option key={noticia.Comentario}  > {noticia.Comentario}</option>
 
   
 
@@ -205,7 +266,7 @@ class ComentarNoticia extends Component{
         });
 
         var noticias4= this.state.Comentarios.map((noticia, i)=>{
-          if(noticia.Noticia===this.state.P){    return ( 
+          if(noticia.Comentario===this.state.Comentario){    return ( 
             
             <div className="card" >  
             <div className="card-body">
@@ -218,7 +279,7 @@ class ComentarNoticia extends Component{
             <h5 className="card-title"> Usuario: {noticia.  Comentario} </h5>
             
         
-             <button   onClick={()=> this.Validar()}> Reportar </button>
+           
              </div>
              </div>
       
@@ -226,7 +287,7 @@ class ComentarNoticia extends Component{
             );}
          
             });
-               const {id,Titulo,Noticia,Usuario,Comentario,P}=this.state
+               const {Descripcion,id,Titulo,Noticia,Usuario,Comentario,P}=this.state
       
               return (
           
@@ -234,59 +295,48 @@ class ComentarNoticia extends Component{
         <form on onSubmit={this.submitHandler}>
       <nav className="navbar navbar-dark bg-primary">
       
-      <a className="navbar-brand" href="http://localhost:3000/AsignarCursosUsuario" >Cursos</a>
+      <a className="navbar-brand" href="http://localhost:3000/Registro" >Registro Estudiante</a>
 
-<a className="navbar-brand" href="http://localhost:3000/PerfilEstudiante" >Perfil</a>
+<a className="navbar-brand" href="http://localhost:3000/Registro2" >Registro Catedratico</a>
 
-<a className="navbar-brand" href="http://localhost:3000/AsignarA4ctividadUsuario" >Actividad</a>
-<a className="navbar-brand" href="http://localhost:3000/ComentarNoticia" >Noticia</a>
+<a className="navbar-brand" href="http://localhost:3000/VerPunteoConferencias" > Actividades</a>
+
+<a className="navbar-brand" href="http://localhost:3000/noticias" > Noticias</a>
+<a className="navbar-brand" href="http://localhost:3000/" >Login</a>
 
       </nav>
       
-       <h1><span className="badge badge-primary">Comentar Noticia </span> 
+       <h1><span className="badge badge-primary">DENUNCIAR Noticia </span> 
       
        </h1>  
        <img src={logo} className="App-logo" alt="logo" />
       
        <  div className="container-fluid" align="center">
       <div className="col-md-4 text-center">
-      <h3><span className="badge badge-primary">Ingrese Datos </span> 
+      <h3><span className="badge badge-primary">Usuario :{ADMIN} </span> 
       
       </h3> 
 
-      <div className="form-group">
-    
-    <h3><span className="badge badge-info">Noticias</span>
+      
+<div className="form-group">
 
-    </h3>
-   
-    <select class="selectpicker" name="Noticia" defaultValue={Noticia} onChange={this.changeHandler} >
+<h3><span className="badge badge-info"> Escoger  Comentarioooos </span>
 
-      {noticias2}
-    </select>
-  </div>
-       <input type="text" className="form-control" placeholder={ADMIN} aria-label="Username" aria-describedby="addon-wrapping"  name ="Usuario"value ={Usuario} onChange={this.changeHandler } ></input>
-       <input type="text" className="form-control" placeholder="Comentario" aria-label="Username" aria-describedby="addon-wrapping"  name ="Comentario"value ={Comentario} onChange={this.changeHandler } ></input>
-    
+</h3>
+
+<select class="selectpicker" name="Comentario" defaultValue={Comentario} onChange={this.changeHandler} >
+
+  {noticias3}
+</select>
+<input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="Descripcion" value={Descripcion} onChange={this.changeHandler} ></input>
+</div>
          <button type="submit" className="btn btn-light">Crear </button>
        </div>
       
         </div>
-        {noticias} 
       
       
-<div className="form-group">
-
-<h3><span className="badge badge-info">Ver Comentarioooos </span>
-
-</h3>
-
-<select class="selectpicker" name="P" defaultValue={P} onChange={this.changeHandler} >
-
-  {noticias3}
-</select>
-<input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="P" value={P} onChange={this.changeHandler} ></input>
-</div>  {noticias4}
+       {noticias4}
 </form>
  
        
@@ -312,4 +362,4 @@ class ComentarNoticia extends Component{
         );
       }
        }
-export default ComentarNoticia
+export default Denuncia

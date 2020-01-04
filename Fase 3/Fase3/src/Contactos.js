@@ -16,7 +16,7 @@ class Contactos extends Component {
       Direccion: '',
       Rol: '',
       Oportunidades: '',
-      Encargado: '',
+      Encargado: '-',
       Contactos: [],
       Admin: [],
       colaborador: [],

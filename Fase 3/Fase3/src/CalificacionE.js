@@ -12,6 +12,8 @@ class CalificacionE extends Component {
         super();
         this.state = {
           id: '',
+          Tipo:'',
+          Actividad:'',
        Usuario: '',
           Comentario: '',
           Calificacion: '',
@@ -383,7 +385,14 @@ class CalificacionE extends Component {
           );
         });
     
-    
+        var Tipo = this.state.RegistroActividades.map((E, i) => {
+          if(E.Actividad===this.state.Actividad&& E.Valor==="Aceptado"){
+                   
+          this.state.Tipo=E.Tipo
+          }
+            
+            
+                });
     
     
         var Ingreso = this.state.RegistroActividades.map((E, i) => {
@@ -475,7 +484,7 @@ class CalificacionE extends Component {
     
     
     
-        const { Comentario, Usuario, Calificacion,  id } = this.state
+        const { Comentario, Usuario, Calificacion,  id , Actividad} = this.state
     
         return (
     
@@ -523,7 +532,7 @@ class CalificacionE extends Component {
     
                     </h3>
                    
-                    <select class="selectpicker" name="Usuario" defaultValue={Usuario} onChange={this.changeHandler} >
+                    <select class="selectpicker" name="Actividad" defaultValue={Actividad} onChange={this.changeHandler} >
     
                       {Ingreso}
                     </select>

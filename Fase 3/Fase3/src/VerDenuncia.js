@@ -10,26 +10,41 @@ var ADMIN ;
 var ADMIN1 ;
 
 let ADMIN2 ;
-class ComentarNoticia extends Component{
+class VerDenuncia extends Component{
     constructor(){
         super();
         this.state={
        P:'',
           Noticia:'',
           Comentario:'',
-          Usuario :'',
+        Descripcion:'',
+        Estado:'', 
+        Usuario :'',
         noticias :[],
           Admin:[],
           colaborador: [],
             Estudiante :[],
            Catedratico:[],
-           Comentarios:[]
+           Comentarios:[],
+           Denuncia:[]
           }
           }
         
         
         
-                 
+                      
+          NotiDenuncia = async() => {
+            request.get('http://localhost:3200/Denuncia')
+            .end( (err ,res)=> {
+        console.log(res);
+        const Denuncia =JSON.parse(res.text);
+        this.setState({
+        
+          Denuncia: Denuncia
+           
+        }); });
+          } 
+      
                 
           NotiComentario = async() => {
             request.get('http://localhost:3200/Comentario')
@@ -117,14 +132,14 @@ class ComentarNoticia extends Component{
          
       }); });
         }
-        Delete = async (id)=>{
-      await axios.delete('http://localhost:3200/noticias/'+id);
-      this.Noti();
+        Delete = async (Noti)=>{
+      await axios.delete('http://localhost:3200/Comentario/'+Noti);
+      this.NotiComentario();
         }
         submitHandler = e => {
           e.preventDefault()
           console.log(this.state)
-          axios.post('http://localhost:3200/Comentario',this.state) 
+          axios.post('http://localhost:3200/Denuncia',this.state) 
           .then(response =>  {
            console.log(response)
           }) ;
@@ -138,19 +153,88 @@ class ComentarNoticia extends Component{
            componentDidMount(){
             this.Noti();
             this.Noti0(); this.Noti3(); this.Noti2();
-            this.Noti4(); this.NotiComentario();
+            this.Noti4(); this.NotiComentario();    this.NotiDenuncia();
                }
           
           
                Validar = (e) =>{
           
+                let valAdmin =false;
+                let valColaborador =false;
+                let valEstudiante =false;
+                let valCatedratico =false;
+                
+                 var colaborador= this.state.colaborador.map((E2, i)=>{
+                   if (E2.Nombre=== this.state.Usuario) {
+                     valColaborador =true;
+                        }     });
+          
+                 var Admin = this.state.Admin.map((E, i)=>{
+                   if (E.Nombre=== this.state.Usuario) {
+                valAdmin =true;
+                   } 
+          
+              
+               
+                 });
+               
+                 var Estudiante= this.state.Estudiante.map((E3, i)=>{
+                  if (E3.Nombre=== this.state.Usuario) {
+               
+               valEstudiante =true;
+                  } 
+          
              
-      this.props.history.push("/Denuncia")     
+              
+                });
+              
+          
+                 var Catedratico= this.state.Catedratico.map((E3, i)=>{
+                   if (E3.Nombre=== this.state.Usuario) {
+                
+                valCatedratico =true;
+                   } 
+          
+              
+               
+                 });
+               
+                  if(valAdmin ===true){ 
+                    alert('Datos Correctos')
+                  
+                  }
+                  
+                 else if(valColaborador ===true){
+                  alert('Datos Correctos')
+                  
+                 }
+                 
+                  else if(valEstudiante ===true){
+                    alert('Datos Correctos')
+                 }
+                 
+               else  if(valCatedratico ===true){
+                alert('Datos Correctos')
+                 }
+                 else{
+                   alert("Datos incorrectos")
+                 }
+                   
                  
                 }
       
         render(){  
-          var Estudiante = this.state.Estudiante .map((E, i)=>{
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+            var Estudiante = this.state.Estudiante .map((E, i)=>{
             if (E.id=== a) {
           ADMIN=E.Nombre;
         
@@ -194,7 +278,7 @@ class ComentarNoticia extends Component{
               });
               
       var noticias3= this.state.Comentarios.map((noticia, i)=>{
-        return (  <option key={noticia.Noticia}  > {noticia.Noticia}</option>
+        return (  <option key={noticia.Comentario}  > {noticia.Comentario}</option>
 
   
 
@@ -205,20 +289,21 @@ class ComentarNoticia extends Component{
         });
 
         var noticias4= this.state.Comentarios.map((noticia, i)=>{
-          if(noticia.Noticia===this.state.P){    return ( 
+          if(noticia.Comentario===this.state.Comentario){    return ( 
             
             <div className="card" >  
             <div className="card-body">
-            <span className="badge badge-info">Notici</span>
+            <span className="badge badge-info">Noticia</span>
           
             <h5 className="card-title">  {noticia.  Noticia} </h5>
             <span className="badge badge-info">Comentario</span>
             <h5 className="card-title"> Usuario: {noticia.  Usuario} </h5>
             
-            <h5 className="card-title"> Usuario: {noticia.  Comentario} </h5>
+            <h5 className="card-title"> Comentario: {noticia.  Comentario} </h5>
             
-        
-             <button   onClick={()=> this.Validar()}> Reportar </button>
+            <button className="btn btn-light" onClick={() => this.Delete(noticia.Noticia)}>Eliminar </button>
+
+           
              </div>
              </div>
       
@@ -226,7 +311,27 @@ class ComentarNoticia extends Component{
             );}
          
             });
-               const {id,Titulo,Noticia,Usuario,Comentario,P}=this.state
+            var noticias5= this.state.Denuncia.map((noticia, i)=>{
+                  return ( 
+                  
+                  <div className="card" >  
+                  <div className="card-body">
+                  <span className="badge badge-info">Denuncia</span>
+                
+                  <h5 className="card-title">  {noticia.Descripcion} </h5>
+                  <span className="badge badge-info">Comentario</span>
+                  <h5 className="card-title">  {noticia.Comentario} </h5>
+                  
+                 
+                   </div>
+                   </div>
+            
+                
+                  );
+               
+                  });
+     
+            const {Descripcion,id,Titulo,Noticia,Usuario,Comentario,P}=this.state
       
               return (
           
@@ -243,52 +348,44 @@ class ComentarNoticia extends Component{
 
       </nav>
       
-       <h1><span className="badge badge-primary">Comentar Noticia </span> 
+       <h1><span className="badge badge-primary">Ver Denuncias </span> 
       
        </h1>  
+
+
+     
+
        <img src={logo} className="App-logo" alt="logo" />
-      
+       {noticias5}
        <  div className="container-fluid" align="center">
       <div className="col-md-4 text-center">
-      <h3><span className="badge badge-primary">Ingrese Datos </span> 
+      <h3><span className="badge badge-primary">Usuario :{ADMIN} </span> 
       
       </h3> 
 
-      <div className="form-group">
-    
-    <h3><span className="badge badge-info">Noticias</span>
+      
+<div className="form-group">
 
-    </h3>
-   
-    <select class="selectpicker" name="Noticia" defaultValue={Noticia} onChange={this.changeHandler} >
+<h3><span className="badge badge-info"> Escoger  Comentarioooos </span>
 
-      {noticias2}
-    </select>
-  </div>
-       <input type="text" className="form-control" placeholder={ADMIN} aria-label="Username" aria-describedby="addon-wrapping"  name ="Usuario"value ={Usuario} onChange={this.changeHandler } ></input>
-       <input type="text" className="form-control" placeholder="Comentario" aria-label="Username" aria-describedby="addon-wrapping"  name ="Comentario"value ={Comentario} onChange={this.changeHandler } ></input>
-    
+</h3>
+
+<select class="selectpicker" name="Comentario" defaultValue={Comentario} onChange={this.changeHandler} >
+
+  {noticias3}
+</select>
+<input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="Descripcion" value={Descripcion} onChange={this.changeHandler} ></input>
+</div>
          <button type="submit" className="btn btn-light">Crear </button>
        </div>
       
         </div>
-        {noticias} 
       
       
-<div className="form-group">
-
-<h3><span className="badge badge-info">Ver Comentarioooos </span>
-
-</h3>
-
-<select class="selectpicker" name="P" defaultValue={P} onChange={this.changeHandler} >
-
-  {noticias3}
-</select>
-<input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping" name="P" value={P} onChange={this.changeHandler} ></input>
-</div>  {noticias4}
+       {noticias4}  
 </form>
- 
+      
+
        
         </div>
       
@@ -312,4 +409,4 @@ class ComentarNoticia extends Component{
         );
       }
        }
-export default ComentarNoticia
+export default VerDenuncia

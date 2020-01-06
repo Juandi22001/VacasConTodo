@@ -1,0 +1,14 @@
+ <Picker       placeholder='Select your SIM'  placeholderStyle={{ color: "#bfc6ea" }}
+            iosHeader="Select your SIM"
+            mode="dropdown"
+            name="datos_estudiante"
+            style={{ width: 300 }}
+
+
+          >
+            {AsignarActividad2}
+          </Picker>    
+            <Item disabled>
+            <Input disabled placeholder='Disabled Textbox'/>
+            <Icon name='information-circle' />  
+          </Item>  

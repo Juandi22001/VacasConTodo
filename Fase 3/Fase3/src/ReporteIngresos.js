@@ -16,17 +16,7 @@ class ReporteIngreso extends Component{
 
   }
   }
-  Noti = async() => {
-    request.get('http://localhost:3200/Egreso')
-    .end( (err ,res)=> {
-console.log(res);
-const Egreso =JSON.parse(res.text);
-this.setState({
-
-Egreso : Egreso   
-}); });
-   
-  }
+  
   Noti2 = async() => {
     request.get('http://localhost:3200/Ingreso')
     .end( (err ,res)=> {
@@ -38,7 +28,17 @@ Ingreso : Ingreso
 }); });
    
   }
+  Noti = async() => {
+    request.get('http://localhost:3200/Egreso')
+    .end( (err ,res)=> {
+console.log(res);
+const Egreso =JSON.parse(res.text);
+this.setState({
 
+Egreso : Egreso   
+}); });
+   
+  }
   Delete = async (id)=>{
 await axios.delete('http://localhost:3200/colaborador/'+id);
 this.Noti();

@@ -835,8 +835,12 @@ app.post('/Inventario', (req, res) => {
       Cantidad: req.body.Cantidad,
       Persona: req.body.Persona,
       Ubicacion: req.body.Ubicacion,
-      Estado: req.body.Estado
+      Estado: req.body.Estado,
+       Usuario:req.body.Usuario,
+       Comida:req.body.Comida,
+       Insumo:req.body.Insumo,
 
+       Carne:req.body.Carne
 
     }
 
@@ -1018,7 +1022,9 @@ app.delete('/Egreso/:id', (req, res) => {
 const Noti2 = fs.readFileSync('Ingreso.json', 'utf-8')
 const Ingreso = JSON.parse(Noti2);
 
-
+app.get('/Ingresos', (req, res) => {
+  res.json(Ingreso)
+});
 
 app.get('/Ingreso', (req, res) => {
   res.json(Ingreso)

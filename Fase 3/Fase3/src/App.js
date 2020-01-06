@@ -58,12 +58,14 @@ import ReporteCursos2 from './ReporteCursos2';
 import ReporteCurso3 from './ReporteCurso3';
 import ReporteUniversidad from './ReporteUniversidad';
 
+import ReporteContactoNombre from './ReporteContactoNombre';
 import ReporteConferencias from './ReporteConferencias';
 import ReporteTalleres from './ReporteTalleres';
 import ReporteEncargado from './ReporteEncargado';
 import ReporteSinEncargado from './ReporteSinEncargado';
 import Denuncia from './Denuncia';
 import VerDenuncia from './VerDenuncia';
+import RegistroA from './RegistroA';
 
 import ReporteIngresos from './ReporteIngresos';
 import ReporteEgresos from './ReporteEgresos';
@@ -145,6 +147,8 @@ class App extends Component {
          
             <Route path="/ReporteContactos" component={ReporteContactos} />      
          
+            <Route path="/ReporteContactoNombre" component={ReporteContactoNombre} />      
+         
             <Route path="/ReporteCursos" component={ReporteCursos} />      
          
             <Route path="/ReporteCursos2" component={ReporteCursos2} />      
@@ -162,6 +166,7 @@ class App extends Component {
             <Route path="/ReporteActividades2" component={ReporteActividades2} />
             <Route path="/ReporteNacionalidad" component={ReporteNacionalidad} />
             <Route path="/ReporteUniversidad" component={ReporteUniversidad} />
+            <Route path="/RegistroA" component={RegistroA} />
        
        
          <Route path="/ReporteActividades" component={ReporteActividades} />

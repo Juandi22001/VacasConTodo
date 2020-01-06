@@ -321,7 +321,23 @@ let Mensajes=[]
 
 
 
+                      var A_colaborador2 = this.state.colaborador.map((c, i) => {
+                        var A_Admin= this.state.Admin.map((c2, i) => {
+                        });
+                        if(this.state.Destinatario==="Todos"){
+                           this.state.Destinatario= c.Nickname;
+                        }
+                      });
+                  
 
+                      var A_colaborador3 = this.state.colaborador.map((c, i) => {
+                        var A_Admin= this.state.Admin.map((c2, i) => {
+                        });
+                        if(this.state.Destinatario==="Todos"){
+                           this.state.Destinatario= c.Nickname;
+                        }
+                      });
+                  
 
           var A_colaborador = this.state.colaborador.map((c, i) => {
             return (
@@ -427,10 +443,12 @@ let Mensajes=[]
   {A_colaborador}
   {A_Catedratico}
   {A_Admin}
-  
+  <option key="TODOS">Todos </option>
+      
 </select>
 
-</div>
+</div><input type="text" className="form-control" placeholder="." aria-label="Username" aria-describedby="addon-wrapping"  name= "Destinatario" value ={Destinatario} onChange={this.changeHandler } ></input>
+
 <input type="text" className="form-control" placeholder="Mensaje" aria-label="Username" aria-describedby="addon-wrapping"  name ="Mensaje"value ={Mensaje} onChange={this.changeHandler } ></input>
 
                            <button type="submit" className="btn btn-light"> Enviar </button>

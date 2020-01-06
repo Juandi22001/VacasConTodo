@@ -431,7 +431,7 @@ let Mensajes=[]
       
       
             let Titular ;
-            
+            var Titular2 =[]
           var A_Catedratico = this.state.AsignarCurso.map((c, i) => {
             var A_CURSOS = this.state.cursos.map((c2, i) => {
       
@@ -444,6 +444,27 @@ let Mensajes=[]
       
             
             });
+            
+      
+      
+            
+      
+      
+            
+          });
+let TitularNew;
+
+
+
+          var A_Catedratico = this.state.Catedratico.map((c, i) => {
+      
+                if  (c.Nombre=Titular){
+   TitularNew = c.Nickname;
+                }      
+      
+            
+      
+      
             
       
       
@@ -515,9 +536,9 @@ let Mensajes=[]
   
       
         
-  <option   > {Titular}</option>
+  <option   > {TitularNew}</option>
       
-      
+            
   {A_Estudiantes3}
   {A_colaborador}
  
@@ -547,7 +568,7 @@ let Mensajes=[]
   
   {A_Estudiantes4}
   
-  <option   > {Titular}</option>
+  <option   > {TitularNew}</option>
       
   {A_Estudiantes3}
 {A_Estudiantes2}

@@ -465,9 +465,9 @@ class MensajeColaborador extends Component {
 
         var A_Catedratico = this.state.AsignarCurso.map((c, i) => {
             var A_CURSOS = this.state.cursos.map((c2, i) => {
-
-                if (c2.Titular === ADMIN && c.Curso === c2.Nombre) {
-                    Titular.push("-----"+c.NombreUsuario+"--------")
+        var A_CURSOS2 = this.state.Estudiante.map((c3, i) => {
+                if (c2.Titular === ADMIN && c.Curso === c2.Nombre &&  c.NombreUsuario===c3.Nombre) {
+                    Titular.push("-----"+c.NombreUsuario+"--------"+c3.Nickname)
                 }
 
 
@@ -476,6 +476,8 @@ class MensajeColaborador extends Component {
 
             });
 
+
+        });
 
 
         });
@@ -533,7 +535,7 @@ class MensajeColaborador extends Component {
 
                         <h1><span className="badge badge-primary">Ver Mensajes </span> </h1>
                 
-                    HOLA
+              
                         {MensajesU2}
                     </div>
 

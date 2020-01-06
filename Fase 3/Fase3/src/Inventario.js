@@ -22,7 +22,42 @@ this.setState({
    
 }); });
      }
-  render(){
+  render(){     var A_Insumo3 = this.state.Inventario.map((Invent, i) => {
+   
+     return (
+
+
+         <div className="card" >
+         <div className="card-body">
+           <span className="badge badge-info">Carnet </span>
+           <h5 className="card-title">  {Invent.Carne} </h5>
+           <span className="badge badge-info">Usuario </span>
+           <h5 className="card-title">  {Invent.Usuario} </h5>
+           <span className="badge badge-info">Insumi</span>
+
+           <h5 className="card-title">  {Invent.Insumo} </h5>
+
+           <span className="badge badge-info">Comida</span>
+
+           <h5 className="card-title">  {Invent.Comida} </h5>
+           <span className="badge badge-info">Descripcion :</span>
+           <p className="card-text"> {Invent.Descripcion} </p>
+
+           <span className="badge badge-info">Ubicacion</span>
+
+           <h5 className="card-title">  {Invent.Ubicacion} </h5>
+           <span className="badge badge-info">Estado</span>
+         </div>
+  
+         <button className="btn btn-light" onClick={() => this.Delete(Invent.id)}>Eliminar </button>
+
+       </div>
+
+
+
+
+     );
+   });
     var Inventario = this.state.Inventario.map((Invent, i)=>{
     return <li key={i }>   
   
@@ -72,7 +107,7 @@ this.setState({
 <span className="badge badge-info">Inventario</span>  </h1> 
  <img src={logo} className="App-logo2" alt="logo" / >
 
-{Inventario} 
+{Inventario} {A_Insumo3}
   </div>
   
 

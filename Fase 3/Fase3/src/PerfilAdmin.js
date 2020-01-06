@@ -254,7 +254,26 @@ class PerfilAdmin extends Component {
         <form on onSubmit={this.submitHandler}>          <nav className="navbar navbar-dark bg-primary">
 
           <a className="navbar-brand" href="http://localhost:3000/MensajesAdmin" >Mensajes</a>
-
+          <a className="navbar-brand" href="http://localhost:3000/ReporteVs" > Reporte VS</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteConferencias" > Reporte Conferencia</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteTalleres" > Reporte  Talleres</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteVisitas" > Reporte  Visitas</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteIngresos" > Reporte   Ingresos</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReportePagos" > Reporte   Pagos</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteCurso3" > Reporte    de Cursos  y Actividades indicando asistencia</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteActividades2" > Reporte    Asistencia indicando asistencia</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteNacionalidad" > ReporteNacionalidad</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteUniversidad" > ReporteUniversidad</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteCursos" > Report Estudiantes asignados Curso</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteCursos2" > Reporte  Estudiante Actividad y Curso</a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteActividades" > Reporte  Estudiante Actividad </a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteContactos" > Reporte  Contactos Ordenamiento </a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteContactoNombre" > Reporte  Contacto Nombre </a>
+           
+          <a className="navbar-brand" href="http://localhost:3000/ReportesinEncargado" > Reporte Sin Encargado </a>
+       
+          <a className="navbar-brand" href="http://localhost:3000/ReporteEncargado" > ReporteEncargado </a>
+          <a className="navbar-brand" href="http://localhost:3000/ReporteEgresos" > Reporte  Egresos</a>
           <a className="navbar-brand" href="http://localhost:3000/RegistroActividades" >Registro Actividades</a>
 
 

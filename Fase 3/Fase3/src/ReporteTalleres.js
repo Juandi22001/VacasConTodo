@@ -96,6 +96,7 @@ var Promedio=[]
                 return acumulador + siguienteValor;
               }, 0)
               
+              
 var PromedioC =sumatoria/Promedio.length;
 
       var Calificacion= this.state.CalificacionActividad.map((I, i)=>{
